@@ -3,7 +3,7 @@ import { Sidenav, Nav, Icon, Dropdown } from 'rsuite';
 
 const headerStyles = {
   textAlign: 'center',
-  padding: 15,
+  padding: 20,
   fontSize: 18,
   fontWeight: 'bold',
   color: '#454546'
@@ -11,8 +11,11 @@ const headerStyles = {
 
 const SideBar = () => {
   return (
-    <div style={{ width: 250 }}>
-      <Sidenav defaultOpenKeys={['3', '4']} appearance="subtle">
+    <div>
+      <Sidenav
+        defaultOpenKeys={['3', '4']}
+        appearance="subtle"
+      >
         <Sidenav.Header>
           <div style={headerStyles}>教学管理系统</div>
         </Sidenav.Header>
@@ -23,7 +26,7 @@ const SideBar = () => {
               首页
             </Nav.Item>
 
-            <Dropdown eventKey="3" title="课程" icon={<Icon icon="book2" />}>
+            <Dropdown eventKey="3" title="课程" icon={<Icon icon="book" />}>
               <Dropdown.Item>课程查询</Dropdown.Item>
               <Dropdown.Item>选课</Dropdown.Item>
               <Dropdown.Item>退课</Dropdown.Item>
@@ -43,6 +46,5 @@ const SideBar = () => {
     </div>
   );
 };
-
 
 export default SideBar;
