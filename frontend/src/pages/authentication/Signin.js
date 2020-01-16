@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Input, Grid, Row, Col, Button } from 'rsuite';
 import { UIContext } from '../../contexts/UIContext';
+import api from '../../tools/api';
 import "./signin.css";
 
 const initUser = {
@@ -29,7 +30,15 @@ const Signin = () => {
       });
       return;
     }
-    console.log(user);
+
+    api
+      .signin(user)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(error => {
+        console.log(error);
+      })
   };
 
   return (
