@@ -19,12 +19,11 @@ code {
   height: 100%;
 }
 
-.sidebar-col {
-  padding: 0 !important;
-  border-right: 1px #eceaea solid;
+/* Input */
+.my-input:focus {
+  border: 1px #e82903 solid !important;
 }
 
-.sidebar-container {
-  height: 900px;
-  background: #fff;
+.my-input:hover {
+  border: 1px #e82903 solid !important;
 }

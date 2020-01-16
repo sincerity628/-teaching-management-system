@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Sidenav, Nav, Icon, Dropdown } from 'rsuite';
+import './public.css';
 
 const headerStyles = {
   textAlign: 'center',
@@ -13,7 +15,7 @@ const SideBar = () => {
   return (
     <div>
       <Sidenav
-        defaultOpenKeys={['3', '4']}
+        defaultOpenKeys={['3', '4', '5']}
         appearance="subtle"
       >
         <Sidenav.Header>
@@ -22,24 +24,31 @@ const SideBar = () => {
 
         <Sidenav.Body>
           <Nav>
-            <Nav.Item eventKey="2" icon={<Icon icon="home" />}>
+            <Nav.Item
+              eventKey="2"
+              icon={<Icon icon="home" />}
+              componentClass={Link}
+              to="/"
+            >
               首页
             </Nav.Item>
 
             <Dropdown eventKey="3" title="课程" icon={<Icon icon="book" />}>
-              <Dropdown.Item>课程查询</Dropdown.Item>
-              <Dropdown.Item>选课</Dropdown.Item>
-              <Dropdown.Item>退课</Dropdown.Item>
+              <Dropdown.Item componentClass={Link} to="/my-class">我的课程</Dropdown.Item>
+              <Dropdown.Item componentClass={Link} to="/class">课程查询</Dropdown.Item>
+              <Dropdown.Item componentClass={Link} to="/choose-class">选课</Dropdown.Item>
             </Dropdown>
 
             <Dropdown eventKey="4" title="成绩" icon={<Icon icon="check-square" />}>
-              <Dropdown.Item>成绩信息</Dropdown.Item>
-              <Dropdown.Item>成绩分布情况</Dropdown.Item>
+              <Dropdown.Item componentClass={Link} to="/score">成绩信息</Dropdown.Item>
+              <Dropdown.Item componentClass={Link} to="/score-status">成绩分布情况</Dropdown.Item>
             </Dropdown>
 
-            <Nav.Item eventKey="5" icon={<Icon icon="bars" />}>
-              学生列表
-            </Nav.Item>
+            <Dropdown eventKey="5" title="列表" icon={<Icon icon="bars" />}>
+              <Dropdown.Item componentClass={Link} to="/students">学生</Dropdown.Item>
+              <Dropdown.Item componentClass={Link} to="/staffs">教职工</Dropdown.Item>
+            </Dropdown>
+
           </Nav>
         </Sidenav.Body>
       </Sidenav>
