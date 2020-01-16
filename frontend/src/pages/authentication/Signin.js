@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Input, Grid, Row, Col, Button } from 'rsuite';
+import { UIContext } from '../../contexts/UIContext';
 import "./signin.css";
 
 const initUser = {
@@ -8,6 +9,7 @@ const initUser = {
 };
 
 const Signin = () => {
+  const { setMessage } = useContext(UIContext);
   const [user, setUser] = useState(initUser);
 
   const handleChange = (v, e) => {
@@ -19,6 +21,14 @@ const Signin = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    if(!user.num || !user.password) {
+      setMessage({
+        isMessage: true,
+        title: 'warning',
+        description: '还有信息没有填写完整噢'
+      });
+      return;
+    }
     console.log(user);
   };
 

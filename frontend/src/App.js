@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { Grid, Row, Col } from 'rsuite';
+import { Grid, Row, Col, Notification } from 'rsuite';
 import UIContextProvider from './contexts/UIContext';
 import AppRouter from './tools/AppRouter';
 import Router from './tools/Router';
