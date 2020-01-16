@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Grid, Row, Col } from 'rsuite';
+import UIContextProvider from './contexts/UIContext';
 import AppRouter from './tools/AppRouter';
 import Router from './tools/Router';
 import Header from './components/public/Header';
@@ -15,23 +16,25 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
-        { isLogin ? (
-          <Grid fluid>
-            <Row>
-              <Col xs={5} className="sidebar-col">
-                <div className="sidebar-container">
-                  <Sidebar />
-                </div>
-              </Col>
-              <Col xs={19} style={{ padding: 0 }}>
-                <Header />
-                <AppRouter />
-              </Col>
-            </Row>
-          </Grid>
-        ) : (
-          <Router />
-        ) }
+        <UIContextProvider>
+          { isLogin ? (
+            <Grid fluid>
+              <Row>
+                <Col xs={5} className="sidebar-col">
+                  <div className="sidebar-container">
+                    <Sidebar />
+                  </div>
+                </Col>
+                <Col xs={19} style={{ padding: 0 }}>
+                  <Header />
+                  <AppRouter />
+                </Col>
+              </Row>
+            </Grid>
+          ) : (
+            <Router />
+          ) }
+        </UIContextProvider>
       </BrowserRouter>
     </div>
   );
