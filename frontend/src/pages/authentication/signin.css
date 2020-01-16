@@ -1,0 +1,23 @@
+.login-row {
+  background-color: #fff;
+  height: 800px;
+}
+
+.login-image {
+  background: url('../../assets/images/login-page.jpg');
+  height: 800px;
+}
+
+.login-title {
+  text-align: center;
+  margin-top: 40%;
+}
+
+.login-form {
+  width: 80%;
+  margin: 10% auto;
+}
+
+.login-input {
+  margin-bottom: 20px;
+}
