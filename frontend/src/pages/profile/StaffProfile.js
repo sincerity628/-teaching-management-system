@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { UIContext } from '../../contexts/UIContext';
 import api from '../../tools/api';
 
 const initUser = {
@@ -12,13 +13,27 @@ const initUser = {
 };
 
 const StaffProfile = (props) => {
+  const { setMessage } = useContext(UIContext);
   const [user, setUser] = useState(initUser);
 
   useEffect(() => {
-    const data = {
-      num: props.match.params.id
-    };
-  }, []);
+    api
+      .getStaff(props.match.params.id)
+      .then(res => {
+        if(res.status === 200) {
+          setUser(res.data);
+        }
+      })
+      .catch(error => {
+        if(error.status === 400) {
+          setMessage({
+            isMessage: true,
+            title: 'error',
+            description: error.data.msg
+          });
+        }
+      })
+  }, [props, setMessage]);
 
   return (
     <div className="profile my-container">
