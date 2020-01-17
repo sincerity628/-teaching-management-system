@@ -14,6 +14,8 @@ app.use("/signin", require('./route/authentication'));
 app.use("/students", require('./route/student'));
 // staff api
 app.use("/staffs", require('./route/staff'));
+// class api
+app.use("/classes", require('./route/class'));
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log('the server is running on port 8080.'));

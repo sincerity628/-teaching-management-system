@@ -25,7 +25,7 @@ const Header = () => {
 
   const transferNum = (role) => {
     if(role === 'student') return `/student-profile/${user.studentId}`;
-    else if(role === 'staff') return `/staff-profile/${user.staffId}`;
+    else if(role === 'staff') return `/staff-profile/${user.workId}`;
   };
 
   return (

@@ -9,4 +9,6 @@ export default {
   // staff
   getAllStaffs: () => request.get('/staffs'),
   getStaff: (id) => request.get(`/staffs/${id}`),
+  // class
+  getAllClasses: (searchText) => request.get(`/classes/${searchText}`), 
 };
