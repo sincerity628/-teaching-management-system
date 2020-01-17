@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
 import { Input, Grid, Row, Col, Button } from 'rsuite';
 import { UIContext } from '../../contexts/UIContext';
 import { UserContext } from '../../contexts/UserContext';
@@ -12,7 +11,6 @@ const initUser = {
 };
 
 const Signin = () => {
-  const history = useHistory();
   const { setMessage } = useContext(UIContext);
   const { login } = useContext(UserContext);
 

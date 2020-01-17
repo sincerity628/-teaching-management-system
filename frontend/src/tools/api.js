@@ -5,6 +5,8 @@ export default {
   signin: (data) => request.post('/signin', data),
   // student
   getAllStudents: () => request.get('/students'),
+  getStudent: (id) => request.get(`/students/${id}`),
   // staff
   getAllStaffs: () => request.get('/staffs'),
+  getStaff: (id) => request.get(`/staffs/${id}`),
 };
