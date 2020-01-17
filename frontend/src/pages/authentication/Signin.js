@@ -17,6 +17,7 @@ const Signin = () => {
   const { login } = useContext(UserContext);
 
   const [user, setUser] = useState(initUser);
+  const [btnLoading, setBtnLoading] = useState(false);
 
   const handleChange = (v, e) => {
     setUser({
@@ -36,6 +37,8 @@ const Signin = () => {
       return;
     }
 
+    setBtnLoading(true);
+
     api
       .signin(user)
       .then(res => {
@@ -47,6 +50,7 @@ const Signin = () => {
             title: 'success',
             description: '登录成功'
           });
+          setBtnLoading(false);
 
           setTimeout(() => {
             login(user);
@@ -57,6 +61,7 @@ const Signin = () => {
       })
       .catch(error => {
         // failed
+        setBtnLoading(false);
         console.log(error);
         if(error.status === 400) {
           setMessage({
@@ -108,6 +113,7 @@ const Signin = () => {
                   block
                   color="red"
                   onClick={handleSubmit}
+                  disabled={btnLoading}
                 >登录</Button>
               </form>
             </div>

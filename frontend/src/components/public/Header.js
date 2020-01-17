@@ -7,7 +7,7 @@ import './public.css';
 
 const Header = () => {
   const { setMessage } = useContext(UIContext);
-  const { logout } = useContext(UserContext);
+  const { user, logout } = useContext(UserContext);
 
   const handleLogout = () => {
     setMessage({
@@ -18,13 +18,18 @@ const Header = () => {
     setTimeout(() => logout(), 2000);
   };
 
+  const transferRole = (role) => {
+    if(role === 'student') return '同学';
+    else if(role === 'staff') return '老师';
+  };
+
   return (
     <div className="my-header">
       <Navbar appearance="subtle" style={{ padding: 4.5 }}>
         <Navbar.Body>
         <Nav pullRight>
           <Dropdown
-            title="username"
+            title={`欢迎！${user.name}${transferRole(user.role)}`}
             icon={<Icon icon="fa" style={{ color: '#eb2f00' }} />}
           >
             <Dropdown.Item componentClass={Link} to="/profile">个人信息</Dropdown.Item>

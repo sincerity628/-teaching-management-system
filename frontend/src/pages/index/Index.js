@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Grid, Row, Col, Notification } from 'rsuite';
+import { Grid, Row, Col } from 'rsuite';
 import { UserContext } from '../../contexts/UserContext';
 import AppRouter from '../../tools/AppRouter';
 import Router from '../../tools/Router';
