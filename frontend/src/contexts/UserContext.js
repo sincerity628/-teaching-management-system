@@ -7,14 +7,15 @@ const UserContextProvider = (props) => {
   const [user, setUser] = useState(localStorage.getItem('user'));
 
   const login = (user) => {
+    history.push("/");
     setUser(JSON.stringify(user));
     localStorage.setItem('user', JSON.stringify(user));
   };
 
   const logout = () => {
-    localStorage.removeItem('user');
-    setUser(null);
     history.push('/signin');
+    setUser(null);
+    localStorage.removeItem('user');
   };
 
   return (

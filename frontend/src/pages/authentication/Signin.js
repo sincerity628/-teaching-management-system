@@ -54,7 +54,6 @@ const Signin = () => {
 
           setTimeout(() => {
             login(user);
-            history.push("/");
           }, 2000);
 
         }
