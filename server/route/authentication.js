@@ -23,6 +23,7 @@ router.post('/', (req, res) => {
         delete user.password;
         return res.json(user);
       } else {
+
         const query2 = `select * from staff where workId = ${req.body.num}`;
         connection.query(query2, (error, results) => {
           if(error) {

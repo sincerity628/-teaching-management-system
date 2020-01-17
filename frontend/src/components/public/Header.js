@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import  { Navbar, Nav, Dropdown, Icon } from 'rsuite';
+import { UIContext } from '../../contexts/UIContext';
+import { UserContext } from '../../contexts/UserContext';
 import './public.css';
 
 const Header = () => {
+  const { setMessage } = useContext(UIContext);
+  const { logout } = useContext(UserContext);
 
   const handleLogout = () => {
-    console.log('log out.');
+    setMessage({
+      isMessage: true,
+      title: 'success',
+      description: '登出成功'
+    });
+    setTimeout(() => logout(), 2000);
   };
 
   return (

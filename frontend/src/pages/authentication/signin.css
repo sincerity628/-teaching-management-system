@@ -1,11 +1,11 @@
 .login-row {
   background-color: #fff;
-  height: 800px;
+  height: 850px;
 }
 
 .login-image {
   background: url('../../assets/images/login-page.jpg');
-  height: 800px;
+  height: 850px;
 }
 
 .login-title {
@@ -14,7 +14,7 @@
 }
 
 .login-form {
-  width: 80%;
+  width: 70%;
   margin: 10% auto;
 }
 

@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Input, Grid, Row, Col, Button } from 'rsuite';
 import { UIContext } from '../../contexts/UIContext';
+import { UserContext } from '../../contexts/UserContext';
 import api from '../../tools/api';
 import "./signin.css";
 
@@ -10,7 +12,10 @@ const initUser = {
 };
 
 const Signin = () => {
+  const history = useHistory();
   const { setMessage } = useContext(UIContext);
+  const { login } = useContext(UserContext);
+
   const [user, setUser] = useState(initUser);
 
   const handleChange = (v, e) => {
@@ -34,10 +39,36 @@ const Signin = () => {
     api
       .signin(user)
       .then(res => {
-        console.log(res);
+        if(res.status === 200) {
+          let user = res.data;
+          // success
+          setMessage({
+            isMessage: true,
+            title: 'success',
+            description: '登录成功'
+          });
+
+          setTimeout(() => {
+            login(user);
+            history.push("/");
+          }, 2000);
+
+        }
       })
       .catch(error => {
+        // failed
         console.log(error);
+        if(error.status === 400) {
+          setMessage({
+            isMessage: true,
+            title: 'error',
+            description: error.data.msg
+          });
+          setUser({
+            ...user,
+            password: ''
+          });
+        }
       })
   };
 
