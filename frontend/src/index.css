@@ -19,6 +19,16 @@ code {
   height: 100%;
 }
 
+/* Link */
+.my-link-style {
+  color: #e82903;
+}
+
+.my-link-style:hover {
+  color: #e82903;
+  text-decoration: none;
+}
+
 /* Input */
 .my-input:focus {
   border: 1px #e82903 solid !important;
@@ -29,69 +39,50 @@ code {
 }
 
 /* Bread Link */
-.bread {
+.my-bread {
 }
 
-.bread-link {
+.my-bread-link {
   color: #808186;
 }
 
-.bread-link:hover {
+.my-bread-link:hover {
   text-decoration: none;
   color: #e82903;
 }
 
-.forward-slash {
+.my-forward-slash {
   margin: 0 10px;
 }
 
-.bread-text {
+.my-bread-text {
   font-weight: bold;
 }
 
 /* Container */
-.container {
+.my-container {
   width: 95%;
   margin: 0 auto;
 }
 
 /* Card */
-.card {
+.my-card {
   background: #fff;
   border-radius: 5px;
   box-shadow: 0 0 5px #e9e7e7;
 }
 
-.card-title {
+.my-card-title {
   padding: 20px;
 }
 
-.card-body {
+.my-card-body {
   padding: 20px 15%;
 }
 
 /* List */
-.list-item {
-}
 
-.list-title {
+.my-list-title {
   font-weight: bold;
   margin-right: 10px;
-}
-
-/* Margin */
-.mt-2 {
-  margin-top: 20px;
-}
-
-.mr-2 {
-  margin-right: 20px;
-}
-
-.mb-2 {
-  margin-bottom: 20px;
-}
-
-.ml-2 {
-  margin-left: 20px;
 }

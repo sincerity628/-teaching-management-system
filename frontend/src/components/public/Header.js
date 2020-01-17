@@ -23,6 +23,11 @@ const Header = () => {
     else if(role === 'staff') return '老师';
   };
 
+  const transferNum = (role) => {
+    if(role === 'student') return `/student-profile/${user.studentId}`;
+    else if(role === 'staff') return `/staff-profile/${user.staffId}`;
+  };
+
   return (
     <div className="my-header">
       <Navbar appearance="subtle" style={{ padding: 4.5 }}>
@@ -32,7 +37,7 @@ const Header = () => {
             title={`欢迎！${user.name}${transferRole(user.role)}`}
             icon={<Icon icon="fa" style={{ color: '#eb2f00' }} />}
           >
-            <Dropdown.Item componentClass={Link} to="/profile">个人信息</Dropdown.Item>
+            <Dropdown.Item componentClass={Link} to={transferNum(user.role)}>个人信息</Dropdown.Item>
             <Dropdown.Item componentClass={Link} to="/setting">设置</Dropdown.Item>
             <Dropdown.Item onClick={handleLogout}>退出登录</Dropdown.Item>
           </Dropdown>

@@ -4,7 +4,7 @@ export default {
   // authentication
   signin: (data) => request.post('/signin', data),
   // student
-  getAllStudent: () => request.get('/students'),
+  getAllStudents: () => request.get('/students'),
   // staff
-  getAllStaff: () => request.get('/staffs'),
+  getAllStaffs: () => request.get('/staffs'),
 };
