@@ -3,12 +3,11 @@ const router = express.Router();
 const connection = require('../database/connection');
 
 // get all classes
-router.get('/:serchText', (req, res) => {
+router.get('/:searchText', (req, res) => {
   const searchText = req.params.searchText;
-  if(searchText) {
+  if(searchText !== 'null') {
     // searchText: class name
-    console.log(searchText);
-    const query = `select * from class where name = ${searchText}`;
+    const query = `select * from class where name = '${searchText}'`;
     connection.query(query, (error, results) => {
       if(error) {
         throw error;

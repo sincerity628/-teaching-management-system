@@ -19,6 +19,24 @@ code {
   height: 100%;
 }
 
+/* Sidebar */
+.sidebar-col {
+  padding: 0 !important;
+  border-right: 1px #eceaea solid;
+}
+
+.sidebar-container {
+  height: 800px;
+  background: #fff;
+}
+
+/* Table */
+.my-table-container {
+  height: 400px;
+  overflow-y: scroll;
+  white-space: nowrap;
+}
+
 /* Link */
 .my-link-style {
   color: #e82903;

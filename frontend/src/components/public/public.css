@@ -2,14 +2,3 @@
 .my-header {
   border-bottom: 1px solid #eceaea;
 }
-
-/* Sidebar */
-.sidebar-col {
-  padding: 0 !important;
-  border-right: 1px #eceaea solid;
-}
-
-.sidebar-container {
-  height: 900px;
-  background: #fff;
-}

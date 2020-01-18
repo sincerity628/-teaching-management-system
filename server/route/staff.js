@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 
 //get a staff
 router.get('/:id', (req, res) => {
-  const query = `select * from staff where workId = ${req.params.id}`;
+  const query = `select * from staff where workId = '${req.params.id}'`;
   connection.query(query, (error, results) => {
     if(error) {
       throw error;

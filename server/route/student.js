@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 
 //get a student
 router.get('/:id', (req, res) => {
-  const query = `select * from student where studentId = ${req.params.id}`;
+  const query = `select * from student where studentId = '${req.params.id}'`;
   connection.query(query, (error, results) => {
     if(error) {
       throw error;

@@ -11,7 +11,7 @@ const headerStyles = {
   color: '#454546'
 };
 
-const SideBar = () => {
+const Sidebar = () => {
   return (
     <div>
       <Sidenav
@@ -56,4 +56,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default Sidebar;
