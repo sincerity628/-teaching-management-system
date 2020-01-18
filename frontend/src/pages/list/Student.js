@@ -32,7 +32,7 @@ const Student = () => {
         <span className="my-bread-text">Students</span>
       </div>
       <div className="my-card mt-4">
-        <h3 className="my-card-title">所有学生</h3>
+        <h3 className="my-card-title">所有学生（{ students.length }）</h3>
         <div className="container pb-4">
           <div className="my-table-container">
             <table className="table table-striped">
