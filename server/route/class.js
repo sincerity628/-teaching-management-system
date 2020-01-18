@@ -42,4 +42,28 @@ router.get('/:searchText', (req, res) => {
 
 });
 
+// get my chosen classes
+router.post('/', (req, res) => {
+  const query = `
+    select *
+    from class
+    where classId in (
+      select classId
+      from chooseClass
+      where studentId = '${req.body.id}'
+    )
+  `;
+  connection.query(query, (error, results) => {
+    if(error) {
+      throw error;
+      return res.status(400).json({
+        msg: '连接数据库失败'
+      });
+    } else {
+      return res.json(results);
+    }
+  });
+  
+});
+
 module.exports = router;

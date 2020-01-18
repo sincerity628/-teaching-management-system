@@ -71,7 +71,7 @@ const Class = () => {
                 value={text}
                 onChange={handleChange}
                 style={{ width: "100%" }}
-                autoCompelete="off"
+                autocompelete="off"
               />
             </FormGroup>
 

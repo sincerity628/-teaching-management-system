@@ -37,6 +37,7 @@ const Sidebar = () => {
               <Dropdown.Item componentClass={Link} to="/my-class">我的课程</Dropdown.Item>
               <Dropdown.Item componentClass={Link} to="/class">课程查询</Dropdown.Item>
               <Dropdown.Item componentClass={Link} to="/choose-class">选课</Dropdown.Item>
+              <Dropdown.Item componentClass={Link} to="/choose-class-status">选课情况</Dropdown.Item>
             </Dropdown>
 
             <Dropdown eventKey="4" title="成绩" icon={<Icon icon="check-square" />}>

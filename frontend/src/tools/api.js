@@ -10,5 +10,6 @@ export default {
   getAllStaffs: () => request.get('/staffs'),
   getStaff: (id) => request.get(`/staffs/${id}`),
   // class
-  getAllClasses: (searchText) => request.get(`/classes/${searchText}`), 
+  getAllClasses: (searchText) => request.get(`/classes/${searchText}`),
+  getMyClasses: (data) => request.post('/classes', data),
 };
