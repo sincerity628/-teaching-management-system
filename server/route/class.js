@@ -63,7 +63,46 @@ router.post('/', (req, res) => {
       return res.json(results);
     }
   });
-  
+
+});
+
+// delete one of my chosen classes
+router.post('/cancel', (req, res) => {
+  const query = `
+    delete from chooseClass
+    where studentId = '${req.body.userId}'
+    and classId = '${req.body.classId}'
+  `;
+
+  connection.query(query, (error, results) => {
+    if(error) {
+      throw error;
+      return res.status(400).json({
+        mag: '数据库连接失败'
+      });
+    } else {
+      const query1 = `
+        select *
+        from class
+        where classId in (
+          select classId
+          from chooseClass
+          where studentId = '${req.body.userId}'
+        )
+      `;
+      connection.query(query1, (error, results) => {
+        if(error) {
+          throw error;
+          return res.status(400).json({
+            msg: '数据库连接失败'
+          });
+        } else {
+          res.json(results);
+        }
+      });
+    }
+  });
+
 });
 
 module.exports = router;

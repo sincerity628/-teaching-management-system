@@ -45,6 +45,7 @@ code {
 .my-link-style:hover {
   color: #e82903;
   text-decoration: none;
+  cursor: pointer;
 }
 
 /* Input */
