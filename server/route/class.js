@@ -114,6 +114,11 @@ router.get('/left/:id', (req, res) => {
       from chooseClass Y
       where Y.studentId = '${req.params.id}'
     )
+    and X.classId not in (
+      select Z.classId
+      from score Z
+      where Z.studentId = '${req.params.id}'
+    )
   `;
   connection.query(query, (error, results) => {
     if(error) {
