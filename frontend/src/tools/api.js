@@ -13,4 +13,5 @@ export default {
   getAllClasses: (searchText) => request.get(`/classes/${searchText}`),
   getMyClasses: (data) => request.post('/classes', data),
   cancelClass: (data) => request.post('/classes/cancel', data),
+  getLeftClasses: (id) => request.get(`/classes/left/${id}`)
 };
