@@ -34,9 +34,9 @@ const Sidebar = () => {
             </Nav.Item>
 
             <Dropdown eventKey="3" title="课程" icon={<Icon icon="book" />}>
+              <Dropdown.Item componentClass={Link} to="/choose-class">选课</Dropdown.Item>
               <Dropdown.Item componentClass={Link} to="/my-class">我的课程</Dropdown.Item>
               <Dropdown.Item componentClass={Link} to="/class">课程查询</Dropdown.Item>
-              <Dropdown.Item componentClass={Link} to="/choose-class">选课</Dropdown.Item>
               <Dropdown.Item componentClass={Link} to="/choose-class-status">选课情况</Dropdown.Item>
             </Dropdown>
 

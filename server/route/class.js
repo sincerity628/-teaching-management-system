@@ -132,4 +132,87 @@ router.get('/left/:id', (req, res) => {
   });
 });
 
+// choose class
+router.post('/choose', (req, res) => {
+  // judge first
+  const query = `
+    select * from class
+    where classId = '${req.body.classId}'
+  `;
+  connection.query(query, (error, results) => {
+    if(error) {
+      throw error;
+      return res.status(400).json({
+        msg: '数据库连接失败'
+      });
+    } else {
+      if(!results.length) {
+        return res.status(400).json({
+          msg: '没有这样的课程...'
+        });
+      } else {
+
+        const query0 = `
+          select * from chooseClass
+          where studentId = '${req.body.userId}'
+          and classId = '${req.body.classId}'
+        `;
+        connection.query(query0, (error, results) => {
+          if(error) {
+            throw error;
+            return res.status(400).json({
+              mag: '数据库连接失败'
+            });
+          } else {
+            if(results.length) {
+              return res.status(400).json({
+                msg: '已经选过该课程了...'
+              });
+            } else {
+
+              const query1 = `
+                insert into chooseClass (classId, studentId)
+                values ('${req.body.classId}', '${req.body.userId}')
+              `;
+              connection.query(query1, (error, results) => {
+                if(error) {
+                  throw error;
+                  return res.status(400).json({
+                    msg: '数据库连接失败'
+                  });
+                } else {
+                  
+                  const query2 = `
+                    select * from class X
+                    where X.classId not in (
+                      select Y.classId
+                      from chooseClass Y
+                      where Y.studentId = '${req.body.userId}'
+                    )
+                    and X.classId not in (
+                      select Z.classId
+                      from score Z
+                      where Z.studentId = '${req.body.userId}'
+                    )
+                  `;
+                  connection.query(query2, (error, results) => {
+                    if(error) {
+                      throw error;
+                      return res.status(400).json({
+                        msg: '数据库连接失败'
+                      });
+                    } else {
+                      res.json(results);
+                    }
+                  });
+                }
+              });
+            }
+          }
+        });
+      }
+    }
+  });
+});
+
 module.exports = router;

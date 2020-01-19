@@ -111,7 +111,7 @@ const MyClass = () => {
       </div>
 
       <div className="my-card mt-4">
-        <h3 className="my-card-title">我的课程（{ classes.length }）</h3>
+        <h3 className="my-card-title">已选课程（{ classes.length }）</h3>
         <div className="container">
           <div className="my-table-container">
             { classes.length? (
