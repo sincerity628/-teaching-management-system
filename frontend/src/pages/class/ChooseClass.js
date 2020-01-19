@@ -39,20 +39,41 @@ const ChooseClass = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    if(!classId) {
+      setMessage({
+        isMessage: true,
+        title: 'warning',
+        description: '请填写要选的课程号码...'
+      });
+      return;
+    }
+    
     let data = {
       userId: user.studentId,
       classId
     };
-    console.log(data);
     api
       .chooseClass(data)
       .then(res => {
-        console.log(res);
+        if(res.status === 200) {
+          setClasses(res.data);
+          setClassId('');
+          setMessage({
+            isMessage: true,
+            title: 'success',
+            description: '选课成功！'
+          });
+        }
       })
       .catch(error => {
-        console.log(error);
+        if(error.status === 400) {
+          setMessage({
+            isMessage: true,
+            title: 'error',
+            description: error.data.msg
+          });
+        }
       })
-
   };
 
   return (
