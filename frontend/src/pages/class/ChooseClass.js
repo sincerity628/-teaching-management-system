@@ -13,10 +13,19 @@ const ChooseClass = () => {
     api
       .getLeftClasses(user.studentId)
       .then(res => {
-        console.log(res);
+        if(res.status === 200) {
+          setClasses(res.data);
+          console.log(res.data);
+        }
       })
       .catch(error => {
-        console.log(error);
+        if(error.status === 400) {
+          setMessage({
+            isMessage: true,
+            title: 'error',
+            description: error.data.msg
+          });
+        }
       })
   }, [user]);
   return (
