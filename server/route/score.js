@@ -35,10 +35,9 @@ router.get('/:id', (req, res) => {
 // get the students and scores from one class
 router.get('/class/:id', (req, res) => {
   const query = `
-    select X.classId, X.studentId, X.score, Y.name, Z.name, Z.point, Z.staff, Z.department
-    from score X, student Y, class Z
+    select X.studentId, X.score, Y.name, Y.department
+    from score X, student Y
     where X.studentId = Y.studentId
-    and X.classId = Z.classId
     and X.classId = '${req.params.id}'
   `;
   connection.query(query, (error, results) => {

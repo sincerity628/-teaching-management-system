@@ -39,7 +39,7 @@ const ChooseClassStatus = (props) => {
       .getClassScore(classId)
       .then(res => {
         if(res.status === 200) {
-          console.log(res);
+          setScores(res.data);
         }
       })
       .catch(error => {
@@ -88,7 +88,37 @@ const ChooseClassStatus = (props) => {
 
           <div className="mt-3">
             { scores.length? (
-              <p>studentTable</p>
+              <div className="my-table-container">
+                <table className="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">学号</th>
+                      <th scope="col">姓名</th>
+                      <th scope="col">院系</th>
+                      <th scope="col">成绩</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    { scores.map((score, index) => (
+                      <tr key={index}>
+                        <th scope="row">{ index + 1 }</th>
+                        <td>
+                          <Link
+                            className="my-link-style"
+                            to={`/student-profile/${score.studentId}`}
+                          >
+                            { score.studentId }
+                          </Link>
+                        </td>
+                        <td>{ score.name }</td>
+                        <td>{ score.department }</td>
+                        <td>{ score.score }</td>
+                      </tr>
+                    )) }
+                  </tbody>
+                </table>
+              </div>
             ) : (
               <p style={{ height: '400px' }}>还没有人完成这门课...</p>
             ) }
