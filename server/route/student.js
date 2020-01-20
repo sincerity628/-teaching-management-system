@@ -38,4 +38,26 @@ router.get('/:id', (req, res) => {
   })
 });
 
+// get all students in one class
+router.get('/class/:id', (req, res) => {
+  const query = `
+    select * from student X
+    where X.studentId in (
+      select Y.studentId
+      from chooseClass Y
+      where classId = '${req.params.id}'
+    )
+  `;
+  connection.query(query, (error, results) => {
+    if(error) {
+      throw error;
+      return res.status(400).json({
+        msg: '数据库连接失败'
+      });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
 module.exports = router;

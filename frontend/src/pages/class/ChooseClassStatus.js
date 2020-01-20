@@ -2,9 +2,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Dropdown } from 'rsuite';
 import { UIContext } from '../../contexts/UIContext';
+import StudentTable from '../../components/table/StudentTable';
 import api from '../../tools/api';
 
-const ChooseClassStatus = () => {
+const ChooseClassStatus = (props) => {
+  localStorage.setItem('history', props.location.pathname);
+
   const { setMessage } = useContext(UIContext);
   const [classId, setClassId] = useState('2800R807');
   const [className, setClassName] = useState('社会学思维');
@@ -30,6 +33,27 @@ const ChooseClassStatus = () => {
         }
       })
   }, [setMessage]);
+
+  useEffect(() => {
+    api
+      .getClassStudents(classId)
+      .then(res => {
+        if(res.status === 200) {
+          setStudents(res.data);
+          console.log(res.data);
+        }
+      })
+      .catch(error => {
+        if(error.status === 400) {
+          setMessage({
+            isMessage: true,
+            title: 'error',
+            description: error.data.msg
+          });
+        }
+      })
+
+  }, [classId, setMessage]);
 
   return (
     <div className="my-container">
@@ -60,9 +84,15 @@ const ChooseClassStatus = () => {
             )) }
             </div>
           </Dropdown>
-          <div className="my-table-container">
-            studentTable
+
+          <div className="mt-3">
+            { students.length? (
+              <StudentTable students={students} />
+            ) : (
+              <p style={{ height: '400px' }}>还没有人选择这门课...</p>
+            ) }
           </div>
+
         </div>
       </div>
     </div>

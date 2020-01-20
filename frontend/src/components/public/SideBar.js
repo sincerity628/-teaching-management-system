@@ -42,7 +42,7 @@ const Sidebar = () => {
 
             <Dropdown eventKey="4" title="成绩" icon={<Icon icon="check-square" />}>
               <Dropdown.Item componentClass={Link} to="/score">成绩信息</Dropdown.Item>
-              <Dropdown.Item componentClass={Link} to="/score-status">成绩分布情况</Dropdown.Item>
+              <Dropdown.Item componentClass={Link} to="/score-status">成绩管理</Dropdown.Item>
             </Dropdown>
 
             <Dropdown eventKey="5" title="列表" icon={<Icon icon="bars" />}>

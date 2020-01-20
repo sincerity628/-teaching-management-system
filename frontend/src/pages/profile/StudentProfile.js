@@ -33,15 +33,38 @@ const StudentProfile = (props) => {
           });
         }
       })
+    return () => localStorage.removeItem('history');
   }, [props, setMessage]);
 
   return (
     <div className="profile my-container">
-      <div className="my-bread mt-4">
-        <Link to="/" className="my-bread-link">Home</Link>
-        <span className="my-forward-slash">/</span>
-        <span className="my-bread-text">Profile</span>
-      </div>
+      { localStorage.getItem('history') === '/students' && (
+        <div className="my-bread mt-4">
+          <Link to="/" className="my-bread-link">Home</Link>
+          <span className="my-forward-slash">/</span>
+          <Link to="/students" className="my-bread-link">Students</Link>
+          <span className="my-forward-slash">/</span>
+          <span className="my-bread-text">Profile</span>
+        </div>
+      ) }
+
+      { localStorage.getItem('history') === '/choose-class-status' && (
+        <div className="my-bread mt-4">
+          <Link to="/" className="my-bread-link">Home</Link>
+          <span className="my-forward-slash">/</span>
+          <Link to="/choose-class-status" className="my-bread-link">Choose Class Status</Link>
+          <span className="my-forward-slash">/</span>
+          <span className="my-bread-text">Profile</span>
+        </div>
+      ) }
+
+      { !localStorage.getItem('history') && (
+        <div className="my-bread mt-4">
+          <Link to="/" className="my-bread-link">Home</Link>
+          <span className="my-forward-slash">/</span>
+          <span className="my-bread-text">Profile</span>
+        </div>
+      ) }
 
       <div className="my-card mt-4">
         <h3 className="my-card-title">个人信息</h3>

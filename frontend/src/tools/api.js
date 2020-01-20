@@ -6,6 +6,7 @@ export default {
   // student
   getAllStudents: () => request.get('/students'),
   getStudent: (id) => request.get(`/students/${id}`),
+  getClassStudents: (id) => request.get(`/students/class/${id}`),
   // staff
   getAllStaffs: () => request.get('/staffs'),
   getStaff: (id) => request.get(`/staffs/${id}`),

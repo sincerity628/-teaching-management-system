@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UIContext } from '../../contexts/UIContext';
+import StudentTable from '../../components/table/StudentTable';
 import api from '../../tools/api';
 
-const Student = () => {
+const Student = (props) => {
+  localStorage.setItem('history', props.location.pathname);
+
   const { setMessage } = useContext(UIContext);
   const [students, setStudents] = useState([]);
 
@@ -34,39 +37,7 @@ const Student = () => {
       <div className="my-card mt-4">
         <h3 className="my-card-title">所有学生（{ students.length }）</h3>
         <div className="container pb-4">
-          <div className="my-table-container">
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">学号</th>
-                  <th scope="col">姓名</th>
-                  <th scope="col">性别</th>
-                  <th scope="col">年龄</th>
-                  <th scope="col">院系</th>
-                </tr>
-              </thead>
-              <tbody>
-                { students.length ? students.map((student, index) => (
-                  <tr key={index}>
-                    <th scope="row">{ index + 1 }</th>
-                    <td>
-                      <Link
-                        className="my-link-style"
-                        to={`/student-profile/${student.studentId}`}
-                      >
-                        { student.studentId }
-                      </Link>
-                    </td>
-                    <td>{ student.name }</td>
-                    <td>{ student.sex }</td>
-                    <td>{ student.age }</td>
-                    <td>{ student.department }</td>
-                  </tr>
-                )) : null }
-              </tbody>
-            </table>
-          </div>
+          <StudentTable students={students} />
         </div>
       </div>
     </div>
