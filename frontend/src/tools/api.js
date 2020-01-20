@@ -17,5 +17,6 @@ export default {
   getLeftClasses: (id) => request.get(`/classes/left/${id}`),
   chooseClass: (data) => request.post('/classes/choose', data),
   // score
-  getMyScore: (id) => request.get(`/score/${id}`)
+  getMyScore: (id) => request.get(`/score/${id}`),
+  getClassScore: (id) => request.get(`/score/class/${id}`)
 };

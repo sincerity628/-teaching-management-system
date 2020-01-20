@@ -37,11 +37,23 @@ const StaffProfile = (props) => {
 
   return (
     <div className="profile my-container">
-      <div className="my-bread mt-4">
-        <Link to="/" className="my-bread-link">Home</Link>
-        <span className="my-forward-slash">/</span>
-        <span className="my-bread-text">Profile</span>
-      </div>
+      { localStorage.getItem('history') === '/staffs' && (
+        <div className="my-bread mt-4">
+          <Link to="/" className="my-bread-link">Home</Link>
+          <span className="my-forward-slash">/</span>
+          <Link to="/staffs" className="my-bread-link">Staffs</Link>
+          <span className="my-forward-slash">/</span>
+          <span className="my-bread-text">Profile</span>
+        </div>
+      ) }
+
+      { !localStorage.getItem('history') && (
+        <div className="my-bread mt-4">
+          <Link to="/" className="my-bread-link">Home</Link>
+          <span className="my-forward-slash">/</span>
+          <span className="my-bread-text">Profile</span>
+        </div>
+      ) }
 
       <div className="my-card mt-4">
         <h3 className="my-card-title">个人信息</h3>

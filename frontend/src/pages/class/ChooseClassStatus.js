@@ -64,11 +64,12 @@ const ChooseClassStatus = (props) => {
       <div className="my-card mt-4">
         <h3 className="my-card-title">选课情况（{ students.length }）</h3>
         <div className="container">
-          <span className="my-hint-text">选择要查看的课程：</span>
+          <span>选择要查看的课程：</span>
           <Dropdown
             title={className}
             open={dropOpen}
             onClick={() => setDropOpen(!dropOpen)}
+            className="mb-1"
           >
             <div className="my-dropdown-menu">
             { classes.map((item, index) => (

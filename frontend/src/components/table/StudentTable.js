@@ -10,8 +10,6 @@ const StudentTable = ({ students }) => {
             <th scope="col">#</th>
             <th scope="col">学号</th>
             <th scope="col">姓名</th>
-            <th scope="col">性别</th>
-            <th scope="col">年龄</th>
             <th scope="col">院系</th>
           </tr>
         </thead>
@@ -28,8 +26,6 @@ const StudentTable = ({ students }) => {
                 </Link>
               </td>
               <td>{ student.name }</td>
-              <td>{ student.sex }</td>
-              <td>{ student.age }</td>
               <td>{ student.department }</td>
             </tr>
           )) : null }

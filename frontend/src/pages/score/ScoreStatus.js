@@ -1,11 +1,103 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { Dropdown } from 'rsuite';
+import { UIContext } from '../../contexts/UIContext';
+import StudentTable from '../../components/table/StudentTable';
+import api from '../../tools/api';
 
-const ScoreStatus = () => {
+const ChooseClassStatus = (props) => {
+  localStorage.setItem('history', props.location.pathname);
+
+  const { setMessage } = useContext(UIContext);
+  const [classId, setClassId] = useState('2800R807');
+  const [className, setClassName] = useState('社会学思维');
+  const [dropOpen, setDropOpen] = useState(false);
+  const [classes, setClasses] = useState([]);
+  const [scores, setScores] = useState([]);
+
+  useEffect(() => {
+    api
+      .getAllClasses(null)
+      .then(res => {
+        if(res.status === 200) {
+          setClasses(res.data);
+        }
+      })
+      .catch(error => {
+        if(error.status === 400) {
+          setMessage({
+            isMessage: true,
+            title: 'error',
+            description: error.data.msg
+          });
+        }
+      })
+  }, [setMessage]);
+
+  useEffect(() => {
+    api
+      .getClassScore(classId)
+      .then(res => {
+        if(res.status === 200) {
+          console.log(res);
+        }
+      })
+      .catch(error => {
+        if(error.status === 400) {
+          setMessage({
+            isMessage: true,
+            title: 'error',
+            description: error.data.msg
+          });
+        }
+      })
+
+  }, [classId, setMessage]);
+
   return (
-    <div className="score-status">
-      <h1>Score Status</h1>
+    <div className="my-container">
+      <div className="my-bread mt-4">
+        <Link to="/" className="my-bread-link">Home</Link>
+        <span className="my-forward-slash">/</span>
+        <span className="my-bread-text">Choose Class Status</span>
+      </div>
+      <div className="my-card mt-4">
+        <h3 className="my-card-title">成绩情况（{ scores.length }）</h3>
+        <div className="container">
+          <span>选择要查看的课程：</span>
+          <Dropdown
+            title={className}
+            open={dropOpen}
+            onClick={() => setDropOpen(!dropOpen)}
+            className="mb-1"
+          >
+            <div className="my-dropdown-menu">
+            { classes.map((item, index) => (
+              <Dropdown.Item
+                key={index}
+                className="my-dropdown-item"
+                onClick={() => {
+                  setClassName(item.name);
+                  setClassId(item.classId);
+                  setDropOpen(false);
+                }}
+              >{ item.name }</Dropdown.Item>
+            )) }
+            </div>
+          </Dropdown>
+
+          <div className="mt-3">
+            { scores.length? (
+              <p>studentTable</p>
+            ) : (
+              <p style={{ height: '400px' }}>还没有人完成这门课...</p>
+            ) }
+          </div>
+
+        </div>
+      </div>
     </div>
   );
 };
 
-export default ScoreStatus;
+export default ChooseClassStatus;

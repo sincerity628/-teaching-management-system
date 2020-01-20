@@ -26,8 +26,29 @@ router.get('/:id', (req, res) => {
       if(results.length) {
         average = (sum / results.length).toFixed(2);
       }
-      
+
       return res.json({ results, average });
+    }
+  });
+});
+
+// get the students and scores from one class
+router.get('/class/:id', (req, res) => {
+  const query = `
+    select X.classId, X.studentId, X.score, Y.name, Z.name, Z.point, Z.staff, Z.department
+    from score X, student Y, class Z
+    where X.studentId = Y.studentId
+    and X.classId = Z.classId
+    and X.classId = '${req.params.id}'
+  `;
+  connection.query(query, (error, results) => {
+    if(error) {
+      throw error;
+      return res.status(400).json({
+        msg: '数据库连接失败'
+      });
+    } else {
+      return res.json(results);
     }
   });
 });

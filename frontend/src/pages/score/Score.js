@@ -18,7 +18,6 @@ const Score = () => {
         if(res.status === 200) {
           setScores(res.data.results);
           setAverage(res.data.average);
-          console.log(res.data);
         }
       })
       .catch(error => {
@@ -31,7 +30,7 @@ const Score = () => {
         }
       })
 
-  }, [setMessage]);
+  }, [user, setMessage]);
 
   return (
     <div className="score my-container">
@@ -72,7 +71,7 @@ const Score = () => {
                     )) }
                   </tbody>
                 </table>
-                <p className="average-point">我的平均分：{ average }</p>
+                <p className="average-point">我的平均成绩：{ average }</p>
               </div>
             ) : (
               <p>还没有完成的课程...</p>

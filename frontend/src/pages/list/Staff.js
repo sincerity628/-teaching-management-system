@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { UIContext } from '../../contexts/UIContext';
 import api from '../../tools/api';
 
-const Staff = () => {
+const Staff = (props) => {
+  localStorage.setItem('history', props.location.pathname);
+
   const { setMessage } = useContext(UIContext);
   const [staffs, setStaffs] = useState([]);
 
@@ -41,8 +43,6 @@ const Staff = () => {
                   <th scope="col">#</th>
                   <th scope="col">工号</th>
                   <th scope="col">姓名</th>
-                  <th scope="col">性别</th>
-                  <th scope="col">年龄</th>
                   <th scope="col">院系</th>
                 </tr>
               </thead>
@@ -59,8 +59,6 @@ const Staff = () => {
                       </Link>
                     </td>
                     <td>{ staff.name }</td>
-                    <td>{ staff.sex }</td>
-                    <td>{ staff.age }</td>
                     <td>{ staff.department }</td>
                   </tr>
                 )) : null }
