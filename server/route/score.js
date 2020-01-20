@@ -52,7 +52,4 @@ router.get('/class/:id', (req, res) => {
   });
 });
 
-
-
-
 module.exports = router;

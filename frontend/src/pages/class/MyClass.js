@@ -5,7 +5,6 @@ import { UIContext } from '../../contexts/UIContext';
 import { UserContext } from '../../contexts/UserContext';
 import api from '../../tools/api';
 
-
 const initModal = {
   isModal: false,
   name: '',

@@ -7,7 +7,6 @@ import ClassTable from '../../components/table/ClassTable';
 import api from '../../tools/api';
 import './class.css';
 
-
 const ChooseClass = () => {
   const { setMessage } = useContext(UIContext);
   const { user } = useContext(UserContext);

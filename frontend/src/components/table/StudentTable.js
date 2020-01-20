@@ -35,5 +35,4 @@ const StudentTable = ({ students }) => {
   );
 };
 
-
 export default StudentTable;
