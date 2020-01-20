@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Dropdown } from 'rsuite';
 import { UIContext } from '../../contexts/UIContext';
-import StudentTable from '../../components/table/StudentTable';
 import api from '../../tools/api';
 
 const ChooseClassStatus = (props) => {
@@ -123,7 +122,6 @@ const ChooseClassStatus = (props) => {
               <p style={{ height: '400px' }}>还没有人完成这门课...</p>
             ) }
           </div>
-
         </div>
       </div>
     </div>

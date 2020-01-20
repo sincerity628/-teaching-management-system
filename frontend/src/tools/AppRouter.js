@@ -2,7 +2,6 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import ChooseClass from '../pages/class/ChooseClass';
 import ChooseClassStatus from '../pages/class/ChooseClassStatus';
-import Class from '../pages/class/Class';
 import MyClass from '../pages/class/MyClass';
 import Home from '../pages/home/Home';
 import Staff from '../pages/list/Staff';
@@ -11,7 +10,6 @@ import StaffProfile from '../pages/profile/StaffProfile';
 import StudentProfile from '../pages/profile/StudentProfile';
 import Score from '../pages/score/Score';
 import ScoreStatus from '../pages/score/ScoreStatus';
-import Setting from '../pages/setting/Setting';
 
 const AppRouter = () =>  {
   return (
@@ -19,7 +17,6 @@ const AppRouter = () =>  {
       <Route exact path="/" component={Home} />
       <Route path="/choose-class" component={ChooseClass} />
       <Route path="/choose-class-status" component={ChooseClassStatus} />
-      <Route path="/class" component={Class} />
       <Route path="/my-class" component={MyClass} />
       <Route path="/staffs" component={Staff} />
       <Route path="/students" component={Student} />
@@ -27,7 +24,6 @@ const AppRouter = () =>  {
       <Route path="/staff-profile/:id" component={StaffProfile} />
       <Route path="/score" component={Score} />
       <Route path="/score-status" component={ScoreStatus} />
-      <Route path="/setting" component={Setting} />
     </Switch>
   );
 };

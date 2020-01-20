@@ -38,7 +38,6 @@ const Header = () => {
             icon={<Icon icon="fa" style={{ color: '#eb2f00' }} />}
           >
             <Dropdown.Item componentClass={Link} to={transferNum(user.role)}>个人信息</Dropdown.Item>
-            <Dropdown.Item componentClass={Link} to="/setting">设置</Dropdown.Item>
             <Dropdown.Item onClick={handleLogout}>退出登录</Dropdown.Item>
           </Dropdown>
         </Nav>

@@ -48,7 +48,7 @@ const StudentProfile = (props) => {
         </div>
       ) }
 
-      { localStorage.getItem('history') === '/choose-class-status' && (
+      { localStorage.getItem('history') === '/score-status' && (
         <div className="my-bread mt-4">
           <Link to="/" className="my-bread-link">Home</Link>
           <span className="my-forward-slash">/</span>
