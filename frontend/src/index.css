@@ -19,6 +19,13 @@ code {
   height: 100%;
 }
 
+/* Text */
+.my-hint-text {
+  padding: 0 0 5px 8px;
+  border-bottom: 2px #e82903 dashed;
+  margin-right: 10px;
+}
+
 /* Sidebar */
 .sidebar-col {
   padding: 0 !important;
@@ -116,7 +123,6 @@ code {
 }
 
 /* List */
-
 .my-list-title {
   font-weight: bold;
   margin-right: 10px;

@@ -40,7 +40,6 @@ const ChooseClassStatus = (props) => {
       .then(res => {
         if(res.status === 200) {
           setStudents(res.data);
-          console.log(res.data);
         }
       })
       .catch(error => {
@@ -63,8 +62,9 @@ const ChooseClassStatus = (props) => {
         <span className="my-bread-text">Choose Class Status</span>
       </div>
       <div className="my-card mt-4">
-        <h3 className="my-card-title">选课情况</h3>
+        <h3 className="my-card-title">选课情况（{ students.length }）</h3>
         <div className="container">
+          <span className="my-hint-text">选择要查看的课程：</span>
           <Dropdown
             title={className}
             open={dropOpen}

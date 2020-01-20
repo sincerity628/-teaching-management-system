@@ -16,6 +16,8 @@ app.use("/students", require('./route/student'));
 app.use("/staffs", require('./route/staff'));
 // class api
 app.use("/classes", require('./route/class'));
+// score api
+app.use("/score", require('./route/score'));
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log('the server is running on port 8080.'));

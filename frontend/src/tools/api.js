@@ -16,4 +16,6 @@ export default {
   cancelClass: (data) => request.post('/classes/cancel', data),
   getLeftClasses: (id) => request.get(`/classes/left/${id}`),
   chooseClass: (data) => request.post('/classes/choose', data),
+  // score
+  getMyScore: (id) => request.get(`/score/${id}`)
 };
