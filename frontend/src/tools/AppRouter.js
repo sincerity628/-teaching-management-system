@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import ChooseClass from '../pages/class/ChooseClass';
+import ChooseClassStatus from '../pages/class/ChooseClassStatus';
 import Class from '../pages/class/Class';
 import MyClass from '../pages/class/MyClass';
 import Home from '../pages/home/Home';
@@ -17,6 +18,7 @@ const AppRouter = () =>  {
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/choose-class" component={ChooseClass} />
+      <Route path="/choose-class-status" component={ChooseClassStatus} />
       <Route path="/class" component={Class} />
       <Route path="/my-class" component={MyClass} />
       <Route path="/staffs" component={Staff} />

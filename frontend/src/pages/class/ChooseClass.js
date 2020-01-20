@@ -31,7 +31,7 @@ const ChooseClass = () => {
           });
         }
       })
-  }, [user]);
+  }, [user, setMessage]);
 
   const handleChange = (v, e) => {
     setClassId(e.target.value);
@@ -47,7 +47,7 @@ const ChooseClass = () => {
       });
       return;
     }
-    
+
     let data = {
       userId: user.studentId,
       classId

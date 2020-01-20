@@ -30,6 +30,22 @@ code {
   background: #fff;
 }
 
+/* Dropdown */
+.my-dropdown-menu {
+  height: 300px;
+  width: 500px;
+  overflow-y: scroll;
+  text-align: center;
+}
+
+.my-dropdown-item:hover {
+  background: rgba(232, 41, 3, 0.1);
+}
+
+.my-dropdown-item a {
+  text-decoration: none !important;
+}
+
 /* Table */
 .my-table-container {
   height: 400px;
