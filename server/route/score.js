@@ -17,6 +17,7 @@ router.get('/:id', (req, res) => {
         msg: '数据库连接失败'
       });
     } else {
+      // count the average score
       let sum = 0;
       results.forEach(result => {
         sum += result.score;
@@ -25,7 +26,8 @@ router.get('/:id', (req, res) => {
       if(results.length) {
         average = (sum / results.length).toFixed(2);
       }
-      return res.json({ results, average });      
+      
+      return res.json({ results, average });
     }
   });
 });
