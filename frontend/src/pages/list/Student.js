@@ -25,6 +25,7 @@ const Student = (props) => {
           decription: '获取学生列表失败'
         });
       })
+
   }, [setMessage]);
 
   return (

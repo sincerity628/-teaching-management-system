@@ -5,7 +5,7 @@ import { UIContext } from '../../contexts/UIContext';
 import { UserContext } from '../../contexts/UserContext';
 import './public.css';
 
-const Header = () => {
+const Header = (props) => {
   const { setMessage } = useContext(UIContext);
   const { user, logout } = useContext(UserContext);
 
@@ -37,7 +37,11 @@ const Header = () => {
             title={`欢迎！${user.name}${transferRole(user.role)}`}
             icon={<Icon icon="fa" style={{ color: '#eb2f00' }} />}
           >
-            <Dropdown.Item componentClass={Link} to={transferNum(user.role)}>个人信息</Dropdown.Item>
+            <Dropdown.Item
+              componentClass={Link}
+              to={transferNum(user.role)}
+              onClick={() => localStorage.setItem('history', '/home')}
+            >个人信息</Dropdown.Item>
             <Dropdown.Item onClick={handleLogout}>退出登录</Dropdown.Item>
           </Dropdown>
         </Nav>

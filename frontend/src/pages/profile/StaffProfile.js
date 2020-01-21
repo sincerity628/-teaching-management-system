@@ -47,7 +47,7 @@ const StaffProfile = (props) => {
         </div>
       ) }
 
-      { !localStorage.getItem('history') && (
+      { localStorage.getItem('history') === '/home' && (
         <div className="my-bread mt-4">
           <Link to="/" className="my-bread-link">Home</Link>
           <span className="my-forward-slash">/</span>

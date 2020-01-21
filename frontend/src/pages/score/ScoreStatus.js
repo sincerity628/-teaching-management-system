@@ -58,7 +58,7 @@ const ChooseClassStatus = (props) => {
       <div className="my-bread mt-4">
         <Link to="/" className="my-bread-link">Home</Link>
         <span className="my-forward-slash">/</span>
-        <span className="my-bread-text">Choose Class Status</span>
+        <span className="my-bread-text">Score Status</span>
       </div>
       <div className="my-card mt-4">
         <h3 className="my-card-title">成绩情况（{ scores.length }）</h3>
